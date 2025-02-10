@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Business Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="media.html">Media</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-dark text-white text-center py-5" style="margin-top: 56px;">
+        <div class="container">
+            <h1>Our Media Gallery</h1>
+            <p>Explore our photos, videos, and featured content</p>
+        </div>
+    </header>
+
+    <!-- Media Content -->
+    <div class="container my-5">
+        <!-- Filters -->
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-outline-primary mx-2 filter-btn" data-filter="all">All</button>
+            <button class="btn btn-outline-primary mx-2 filter-btn" data-filter="photos">Photos</button>
+            <button class="btn btn-outline-primary mx-2 filter-btn" data-filter="videos">Videos</button>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="row g-4" id="media-grid">
+            <!-- Photo Example -->
+            <div class="col-md-4 media-item" data-category="photos">
+                <div class="card">
+                    <img src="imgs/photo1.jpg" class="card-img-top" alt="Photo 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Photo Title 1</h5>
+                        <p class="card-text">Short description of this photo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 media-item" data-category="photos">
+                <div class="card">
+                    <img src="imgs/photo2.jpg" class="card-img-top" alt="Photo 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Photo Title 2</h5>
+                        <p class="card-text">Another photo description.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Example -->
+            <div class="col-md-4 media-item" data-category="videos">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Video Title 1</h5>
+                        <p class="card-text">Short description of the video.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 media-item" data-category="videos">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/GhZWBYVfDaU?si=izFWMt5zemAL1db6" title="YouTube video" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Video Title 2</h5>
+                        <p class="card-text">Another video description.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3">
+        <p>Ivan Strelcov | &copy; 2025</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Filter Media Items
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const mediaItems = document.querySelectorAll('.media-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                mediaItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
